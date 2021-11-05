@@ -10,7 +10,8 @@ div#app {
 }
 @media handheld and (not all) {
     div#app {
-        width: 90%;
+        margin: auto;
+        width: 85%;
         height: 100%;
     }
 }
