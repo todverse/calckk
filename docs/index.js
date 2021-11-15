@@ -1,4 +1,6 @@
-
+let delet = document.getElementsByClassName('clear')[0];
+console.log(delet);
+delet.setAttribute('disabled', true);
 
 
 function suck() {
@@ -61,6 +63,7 @@ function suck() {
     text3.innerHTML = result + result/4 + '<span class="kal">ккал</span>';
     }
     window.scroll(0,1000);
+    delet.removeAttribute('disabled');
     }
 }
 function del() {
@@ -80,6 +83,7 @@ function del() {
     for(let i = 0; i<5; i++) {
         obj3[i].checked = false;
     }
+    delet.setAttribute('disabled', true);
  }
 
 

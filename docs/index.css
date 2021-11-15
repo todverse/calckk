@@ -1,6 +1,9 @@
 body {
     font-family: arial;
 }
+.center {
+    text-align: center;
+}
 div#app {
     margin: auto;
     width: 400px;
@@ -76,15 +79,23 @@ div#app button.calc:hover {
     background-color: rgb(209, 136, 0);
 }
 div#app button#clear {
+    margin-top: 40px;
     margin-left: 40px;
     width: 130px;
     height: 40px;
     border: none;
-    color: white;
-    background-color: orange;
+    color: black;
+    background-color: transparent;
 }
 div#app button#clear:hover {
-    background-color: rgb(209, 136, 0);
+    background-color: gray;
+}
+div#app button#clear:disabled {
+    background-color: transparent;
+    color: gray;
+}
+div#button {
+    display: flex;
 }
 div#results {
     width: 400px;
