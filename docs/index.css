@@ -119,4 +119,12 @@ span.kal {
         margin-top: 20px;
         width: 20%;
     }
+    div#app button.calc {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    div#app button#clear {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
