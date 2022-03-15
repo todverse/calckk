@@ -3,7 +3,13 @@ import './index.css'
 
 
 
-
+class Err extends React.Component {
+    render() {
+        return(
+            <div className='err'></div>
+        )
+    }
+}
 
 class Answer extends React.Component {
     render() {
@@ -115,11 +121,13 @@ class App extends React.Component {
     componentDidMount() {
         document.getElementsByClassName('calculate')[1].disabled = true;
         document.getElementsByClassName('answer')[0].style.display = 'none';
+        document.getElementsByClassName('err')[0].style.display = 'none';
     }
     calc = () => {
         let ph = false;
         let awh = false;
         let sex = false;
+        let err;
         if(document.getElementsByClassName('ph_rad')[0].checked) {
             ph = true;
         } else if(document.getElementsByClassName('ph_rad')[1].checked) {
@@ -153,6 +161,38 @@ class App extends React.Component {
         document.getElementsByClassName('answer_answ')[0].innerHTML = answ - answ/4 + 'ккал';
         document.getElementsByClassName('answer_answ')[1].innerHTML = answ + 'ккал';
         document.getElementsByClassName('answer_answ')[2].innerHTML = answ + answ/4 + 'ккал';
+        } else if(!sex) {
+            document.getElementsByClassName('err')[0].style.display = '';
+            document.getElementsByClassName('err')[0].innerHTML = 'Укажите Ваш пол';
+            setTimeout(() => {
+                document.getElementsByClassName('err')[0].style.display = 'none';
+            },1300);
+        } else if(!awh) {
+            if(document.getElementsByClassName('awh_in')[0].value === '' ) { 
+            document.getElementsByClassName('err')[0].style.display = '';
+            document.getElementsByClassName('err')[0].innerHTML = 'Укажите Ваш возраст';
+            setTimeout(() => {
+                document.getElementsByClassName('err')[0].style.display = 'none';
+            },1300);
+        } else if(document.getElementsByClassName('awh_in')[1].value === '' ) { 
+            document.getElementsByClassName('err')[0].style.display = '';
+            document.getElementsByClassName('err')[0].innerHTML = 'Укажите Ваш вес';
+            setTimeout(() => {
+                document.getElementsByClassName('err')[0].style.display = 'none';
+            },1300);
+        } else if(document.getElementsByClassName('awh_in')[2].value === '' ) { 
+            document.getElementsByClassName('err')[0].style.display = '';
+            document.getElementsByClassName('err')[0].innerHTML = 'Укажите Ваш рост';
+            setTimeout(() => {
+                document.getElementsByClassName('err')[0].style.display = 'none';
+            },1300);
+        }
+        }  else if(!ph) {
+            document.getElementsByClassName('err')[0].style.display = '';
+            document.getElementsByClassName('err')[0].innerHTML = 'Укажите физическую активность';
+            setTimeout(() => {
+                document.getElementsByClassName('err')[0].style.display = 'none';
+            },1300);
         }
     }
     male = () => {
@@ -218,6 +258,7 @@ class App extends React.Component {
                 <button className='calculate' onClick={this.calc}>Расчитать</button>
                 <button className='calculate' onClick={this.clear}>Очистить</button>
                 <Answer />
+                <Err />
             </div>
         )
     }
